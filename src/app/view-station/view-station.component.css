@@ -1,0 +1,13 @@
+table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+  }
+  th, td {
+    background-color: LightCyan ;
+    text-shadow: white;
+  }
+  .center {
+    display: flex;
+    justify-content: center;
+    text-decoration-color: red;
+  }

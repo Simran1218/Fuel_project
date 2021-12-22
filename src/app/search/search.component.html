@@ -1,0 +1,92 @@
+
+<!-- <div class="row">
+  <div class="congtainer">
+    <div class="col-md-12">
+      <div class="header" [ngStyle]="{backgroundColor: getcolor()}">
+        <div class="header-right">
+   <ul class="nav navbar-nav navbar-right"> -->
+    <!-- <li>
+      <a style="cursor: pointer;" (click) = "onView()" >View Station</a>
+    </li>
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+    <li>
+      <a style="cursor: pointer;" (click) = "addStation()" >Add Station</a>
+    </li> -->
+  
+    <!-- <a routerLink="/" class="navbar-brand "></a>
+    <li>
+      <a (click)="viewStationMethod()" style="cursor: pointer;">View Station</a>   
+       
+      </li>
+      <li>
+      <a (click)="addStationMethod()" style="cursor: pointer;">Add station</a>
+      
+    </li>
+    </ul>
+    </div>
+  </div>
+</div>
+</div>
+</div> -->
+<div class="row">
+  <div class="col-md-12">
+  <h1 style="text-align:center">{{title}}</h1>
+</div>
+</div>
+    <ul>
+        <br>
+        <br>
+        <div class="parent">
+          <!-- <mat-form-field> -->
+         <div *ngIf="xerror==true" style="font-style: italic; color: rgb(212, 17, 17);">{{xmessage}}
+           <p style="font-style: italic; color: rgb(212, 17, 17);" ></p>
+         </div>  
+         <div *ngIf="yerror==true" style="font-style: italic; color: rgb(212, 17, 17);">{{ymessage}}
+           <p  style="font-style: italic; color: rgb(212, 17, 17);"></p>
+         </div>
+        <div style="text-align:center;">
+          <div  [formGroup]="form" >   
+            <label for="xnumber">X-Coordinate:</label> 
+            <input type="text" formControlName="xnumber" #xCord class="searchTer" >&nbsp; &nbsp;
+           
+
+            <label for="ynumber">Y-Coordinate:</label>  
+            <input type="text" formControlName="ynumber" #yCord class="searchTer" >&nbsp; &nbsp;
+            <!-- <div *ngIf="f.ynumber.touched && f.ynumber.invalid" class="alert alert-danger">
+              <div *ngIf="f.ynumber.errors.required">Number is required.</div>
+              <div *ngIf="f.ynumber.errors.pattern">Enter only number.</div>
+          </div> -->
+         <!-- <div class="row" formControlName="xnumber, ynumber "> -->
+        <button   class="btn btn-primary" type="submit" value="Submit" style="cursor: pointer;"  
+        (click) = "onSearch(xCord.value,yCord.value)">  Search</button><br>
+        
+    </div>
+    </div>
+    </div>
+    </ul>
+
+    <!-- <h2>Top  3 fuel Station</h2> -->
+<div  class="center" style="text-align:center;">
+ <div class="congtainer">      
+	<table *ngIf="showtable==true" class="table table-striped">
+    <thead class="thead-info">
+			<tr class="bg-warnig">
+        <th >Place Name</th>
+        <th >Fuel Rate</th>
+        <th >Distnace</th>
+      </tr>
+    </thead>
+    <tbody>
+			<tr   class="table-warning"  *ngFor="let corDate of data">
+				<td class="table-primary">{{corDate.place_name}}</td>
+				<td class="table-info">{{corDate.Fuel_Rate}}</td>
+        <td class="table-primary">{{corDate.distance_from_my_location}}</td>
+			</tr>
+    </tbody>
+	</table>
+</div>
+</div>
+   
+
+ 

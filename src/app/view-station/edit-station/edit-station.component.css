@@ -1,0 +1,10 @@
+.center {
+    display: flex;
+    justify-content: center;
+    text-emphasis-color: blue;
+    
+  }
+  .p {
+        text-decoration-color: red;
+        background-color: red;
+  }

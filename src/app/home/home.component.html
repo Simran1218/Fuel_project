@@ -1,0 +1,66 @@
+
+<div class="row">
+  <div class="congtainer">
+    <div class="col-md-12">
+      
+      <div class="header"   [ngStyle]="{backgroundColor: getcolor()}" >
+        <!-- <div class="d-inline p-2 bg-primary text-warning"> -->
+      <!-- </div>[ngStyle]="{backgroundColor: getcolor()}"> -->
+        <div class="header-right">
+          
+   <ul class="nav navbar-nav navbar-right">
+    <!-- <li>
+      <a style="cursor: pointer;" (click) = "onView()" >View Station</a>
+    </li>
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+    <li>
+      <a style="cursor: pointer;" (click) = "addStation()" >Add Station</a>
+    </li> -->
+  
+    <!-- <a routerLink="/" class="navbar-brand "></a> -->
+    <li>
+      <a (click)="viewStationMethod()" style="cursor: pointer;">View Station</a>   
+       
+      </li>
+      <li>
+      <a (click)="addStationMethod()" style="cursor: pointer;">Add station</a>
+      
+    </li>
+    </ul>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+    <!-- <ul>
+        <br>
+        <br>
+        <div class="parent">
+           <mat-form-field> -->
+            <!-- <div style="text-align:center;">
+        X-Coordinate:
+        <input type="text" class="searchTer">
+        Y-Coordinate:
+        <input type="text" class="searchTer">
+        <button type="submit" class="btn btn-info" style="cursor: pointer;" (click) = "onSearch()"> Search</button><br>
+      </div>
+    </div>
+    </ul>
+  
+ --> 
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+    <h1 style="text-align:center">{{title}}</h1>
+  </div>
+</div> -->
+<app-search *ngIf="displaySearch" ></app-search>
+ <app-view-station *ngIf="displayViewStation"></app-view-station>
+<app-add-station *ngIf="displayAddStation"></app-add-station> 
+
+<!-- 
+<button (click)="getEmploye(1)">Get Employe</button>
+<p>{{data | json}}</p> -->
+<!-- <router-outlet></router-outlet> -->

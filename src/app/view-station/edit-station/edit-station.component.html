@@ -1,0 +1,79 @@
+
+  <!-- <form class="product-form" action="/admin/add-station" method="POST">
+          <label for="title">Name :</label>
+          <input type="text" name="title" id="title" required [(ng)]>
+          <br>
+          <br>
+          <label for="code">Code :</label>
+          <input type="text" name="code" id="code">
+          <br>
+          <label for="X-Coordinate">X-Coordinate :</label>
+          <input type="number" name="X-Coordinate" id="X-Coordinate">
+          <br>
+          <br>
+          <label for="Y-Coordinate">Y-Coordinate :</label>
+          <input type="number" name="Y-Coordinate" id="Y-Coordinate" step="0.01">
+          <br>
+          <label for="">Fuel Price :</label>
+          <input type="number" name="price" id="pricee">
+    
+      <button class="btn" type="submit" (click)= "editStation()">Submit</button>
+  </form> -->
+  <!-- <div >
+    <div class="parent">
+       <mat-form-field> 
+        <div style="text-align:center;">
+    <main>
+      <h2>Edit Station</h2>
+      <div class="row ">
+  <form class="product-form" (ngSubmit)="onSubmit()">
+          
+    <div class="row">
+      <label for="title">Name :</label>
+      <input type="text"  name="place_name" id="title" required [(ngModel)]="place.place_name">
+    </div>
+    <br>
+     <br> 
+    <div class="row">
+      <label for="code">Code :</label>
+      <input type="number"  name="code" id="code" required [(ngModel)]="place.station_cade">
+      <br>
+  </div>
+  <br>
+  <div class="row">
+    <label for="X-Coordinate">X-Coordinate :</label>
+    <input type="number"  name="X-Coordinate" id="X-Coordinate" required [(ngModel)]="place.x_coordinate">
+  </div>
+    <br>
+    <br>
+    <div class="row">
+    <label for="Y-Coordinate">Y-Coordinate :</label>
+    <input type="number"   name="Y-Coordinate" id="Y-Coordinate"  required [(ngModel)]="place.y_coordinate">
+    </div> -->
+    <br>
+    <!-- <button type="button" class="btn btn-light"   *ngIf="displayhomeStation">Back</button> -->
+    <!-- <button type="button" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true" *ngIf="displayhomeStation"  (click) ="backFunc()">Back</button> -->
+    
+    <h2 class="text-center"><p>Edit the latest price</p></h2>
+    <br>
+    <div class="center">
+      <br>
+      <div class="row">      
+      <label for="">Price:  </label>
+      <!-- {{ msgFromParent1.Fuel_Rate}} -->
+      <input type="number"  class =" text-right" name="price" id="price"  placeholder="Enter a price " required [(ngModel)]="msgFromParent1.Fuel_Rate">
+      <!-- <div class="center"> -->
+      <!-- <span class="input-group-btn"> -->
+      <button type="reset" class=" btn  btn-success"  value="Reset" (click)="editStation()" type="submit">Update</button>
+      <!-- </span> -->
+      <!-- </div> -->
+      <br>
+</div>
+</div>
+<!-- </div>
+</form> -->
+<!-- </div>
+</main>
+</div>
+</div>
+</div> -->
