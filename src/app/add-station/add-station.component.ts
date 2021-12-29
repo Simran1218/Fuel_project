@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, MaxLengthValidator, Validators } from '@angular/forms';
+import { isString } from 'util';
 import { Places } from '../Places';
 import { TripService } from '../service/trip.service';
+
 
 @Component({
   selector: 'app-add-station',
@@ -20,19 +22,26 @@ export class AddStationComponent implements OnInit {
   showmessage: any = "Enter valid data!!";
   private formSubmitAttempt: boolean;
   errorMsg:any;
-
+  errorForm:boolean = false;
+  xcordError:boolean =false;
+  ycordError:boolean=false;
+  message:any;
+  fuelError:boolean;
+  stCodeError: boolean;
+  nameError:boolean;
+  dataInsert:boolean;
   constructor(public tripServiceObject: TripService,  private formBuilder: FormBuilder ) { 
    
   }
   
   ngOnInit() {
-    this.form = this.formBuilder.group({
-      name: ['', [Validators.required],],
-      number: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
-     latitude : ['',  [Validators.required,Validators.pattern("^[0-9]*$")]],
-     longitude : ['',  [Validators.required,Validators.pattern("^[0-9]*$")]],
-    price: ['', [Validators.required,Validators.pattern("^[0-9]*$")]]
-    })
+    // this.form = this.formBuilder.group({
+    //   // name: ['', [Validators.required]],
+    //   number: ['', [Validators.required]],
+    //  latitude : ['',  [Validators.required]],
+    //  longitude : ['',  [Validators.required]],
+    // price: ['', [Validators.required]]
+    // })
   }
  
 
@@ -42,19 +51,66 @@ export class AddStationComponent implements OnInit {
   }
 
   onSubmit(){
-    
+    debugger;
+    this.errorForm=true;
     this.formSubmitAttempt = true;
+    this.xcordError=false;
+    this.ycordError=false;
+    this.fuelError=false;
+    this.stCodeError=false;
+    this.nameError =false;
+    if(!this.cordinateValidation(this.place.X_Coordinate)){
+      this.xcordError=true;
+    }
+    
+    if(!this.cordinateValidation(this.place.Y_Coordinate)){
+      this.ycordError=true;
+    }
+
+    if(isNaN(this.place.Fuel_rate)){
+      this.fuelError=true;
+    }  
+    
+    if(isNaN(this.place.code)){
+      this.stCodeError=true;
+    }
+
+    const addPlace = this.place.place_name;
+    if(!isNaN(Number(addPlace))){
+      this.nameError=true;
+    //   if(addPlace == 0){
+    //   this.dataInsert=true;
+    // }
+    }
+    if(this.xcordError == true || this.ycordError == true || this.stCodeError==true || this.fuelError==true || this.nameError==true){
+      return
+    }else{
+      this.xcordError=false;
+      this.ycordError=false;
+      this.fuelError=false;
+      this.stCodeError=false;
+      this.nameError=false;
+      // this.dataInsert=false;
+    }
+
     if (this.form.valid) {
-      debugger;
       this.tripServiceObject.postNewStation(this.place).subscribe(data => {
         console.log(data)
         this.place = new Places();
       })
-      
+      this.showMessageSuccess();
       console.log('form submitted');
     } 
    
   }
+  cordinateValidation(cordinates){
+    if(Number(cordinates) <= 180 && Number(cordinates) >= -180){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
 
   isFieldValid(field: string) {
     return (!this.form.get(field).valid && this.form.get(field).touched) ||
@@ -79,8 +135,17 @@ export class AddStationComponent implements OnInit {
 
     }
 
+    showMessageSuccess(){
+        
+      this.message = true;
+      setTimeout(() => this.message=false, 2000);
+    }
+
  }
 function minLength(arg0: number) {
   throw new Error('Function not implemented.');
 }
 
+function snackBar(){
+ 
+}

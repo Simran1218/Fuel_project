@@ -113,6 +113,9 @@ export class HomeComponent implements OnInit {
   // getSubscribeData(getSubscribeData: any) {
   //   throw new Error('Method not implemented.');
   // }
+  backFunc(){ 
+    window.location.reload();
+    }  
  
 }
 // function places_name(places_name: any) {

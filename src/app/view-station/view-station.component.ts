@@ -29,6 +29,11 @@ stations: any[] = [];
   place: Places = new Places();
   index:any;
   fuel:any;
+  deleteerror: any;
+  deletemessage: any = false;
+  editererror: boolean;
+  editmessage: any =false;
+  message:boolean;
   
   constructor(public tripServiceObject: TripService) {
     this.displayeditStation=false;
@@ -45,8 +50,11 @@ stations: any[] = [];
     console.log(stationData);
     this.data.splice(index,1);
     this.tripServiceObject.deleteStaionId(stationData.id).subscribe(data=>{
-      this.data=data;
-    })
+       this.data=data;
+       this.deleteerror = false;
+     
+     })
+    this.showMessageSuccess();
   }
 
   editStation(station,index): void {
@@ -56,7 +64,7 @@ stations: any[] = [];
     this.fuel=station.Fuel_Rate;
     console.log(station);
     this.sendToEdit = this.stations;
-    
+   
   };
 
   updateStation(stationdata){
@@ -68,10 +76,15 @@ stations: any[] = [];
         console.log(data);
     }
     )
+    
+    this.editMessageSuccess() 
+    
     this.edit=false;
     this.update=false;
+    
   }
 
+  
 
 
   enableEditMethod(e, i) {
@@ -97,6 +110,18 @@ stations: any[] = [];
     backFunc(){ 
       window.location.reload();
       }  
+
+      showMessageSuccess(){
+        
+        this.message = true;
+        setTimeout(() => this.message=false, 2000);
+      }
+      editMessageSuccess(){
+        
+        this.editmessage = true;
+        setTimeout(() => this.editmessage=false, 2000);
+      }
+
 }
 
 
@@ -105,3 +130,5 @@ stations: any[] = [];
 function input(input: any) {
   throw new Error('Function not implemented.');
 }
+
+

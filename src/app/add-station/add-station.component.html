@@ -1,68 +1,111 @@
 <div >
   <div class="parent">
-    <button type="button" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"   *ngIf="displayhomeStation" (click)="backFunc()">Back</button>
+    <!-- <button type="button" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"   *ngIf="displayhomeStation" (click)="backFunc()">Back</button> -->
       <div style="text-align:center;">
       <main>
-        <h1>Add New Station</h1>
-        <div class="row ">
-          <form  [formGroup]="form" class="product-form" (ngSubmit)="onSubmit()" ngClass="{
-            'has-error': !form.get('name').valid && form.get('name').touched,
-            'has-feedback': !form.get('name').valid && form.get('name').touched
-        }">
-            <div class="row" [ngClass]="displayFieldCss('name')">
-              <label for="name" class="control-label required">Name :</label>
-              <input type="text"  formControlName ="name" name="place_name" id="title" required [(ngModel)]="place.place_name" placeholder=" Enter the place name"  >
-              <app-field-error-display 
-              [displayError]="isFieldValid('name')" 
-              errorMsg="Please inform your name">
-              </app-field-error-display>
-            </div>
-            
-            <br>   
-            <div class="row" [ngClass]="displayFieldCss('number')">
-              <label for="number" class="control-label required">code :</label>
-              <input type="text" formControlName="number"   id="code" required [(ngModel)]="place.code" >
-              <app-field-error-display 
-              [displayError]="isFieldValid('number')" 
-              errorMsg="Please inform your Code">
-              </app-field-error-display>
-            </div>
-            <br>
-            <div class="row" [ngClass]="displayFieldCss('latitude')">
-              <label for="latitude" class="control-label required">X-Coordinate :</label>
-              <input type="text" formControlName="latitude"  name="X-Coordinate" id="X_Coordinate" required [(ngModel)]="place.X_Coordinate">
-              <app-field-error-display 
-              [displayError]="isFieldValid('latitude')" 
-              errorMsg="Please inform your X-Coordinate">
-              </app-field-error-display>
-            </div>
-            <br> 
-           <div class="row" [ngClass]="displayFieldCss('longitude')">
-              <label for="longitude" class="control-label required">Y-Coordinate :</label>
-              <input type="text" formControlName="longitude"  name="Y-Coordinate" id="Y_Coordinate" required [(ngModel)]="place.Y_Coordinate">
-              <app-field-error-display 
-              [displayError]="isFieldValid('longitude')" 
-              errorMsg="Please inform your Y-Coordinate">
-              </app-field-error-display>
-            </div>
-            <br> 
-           <div class="row" [ngClass]="displayFieldCss('price')">
-              <label for="price" class="control-label required">Price: </label>
-              <input type="number"  name="price" formControlName="price" id="price" required [(ngModel)]="place.Fuel_rate">
-              <app-field-error-display 
-              [displayError]="isFieldValid('price')" 
-              errorMsg="Please inform your Price">
-              </app-field-error-display>
-            </div>
-            <br> 
-            <div>
-              <button  class="btn btn-success" type="submit" >Submit</button>
-              
-            </div>
+        <h1 class="font-effect-fire" style="text-align:center; font-family: Sofia, sans-serif; font-size: 50px; color:black;" >Add New Station</h1>
+        <h2 *ngIf="message==true" style="text-align: center; color: seagreen; font-size: medium;">Record Added Succefully!!!</h2>
+        <!-- <div name="errorDiv" *ngIf="errorForm==true">
+          <app-field-error-display 
+          [displayError]="isFieldValid('name')" 
+          errorMsg="Please enter valid name">
+          </app-field-error-display>
 
-            <br> 
-          </form>
+          <app-field-error-display 
+          [displayError]="isFieldValid('number')" 
+          errorMsg="Please enter Code">
+          </app-field-error-display>
+
+          <app-field-error-display 
+          [displayError]="isFieldValid('latitude')" 
+          errorMsg="Please enter valid X-Coordinate">
+          </app-field-error-display>  
+                
+          <app-field-error-display 
+          [displayError]="isFieldValid('longitude')" 
+          errorMsg="Please enter valid Y-Coordinate">
+          </app-field-error-display>
+
+          <app-field-error-display 
+          [displayError]="isFieldValid('price')" 
+          errorMsg="Please enter  Price">
+          </app-field-error-display>
+
+        </div> -->
+
+        <div *ngIf="nameError==true">
+        <app-field-error-display 
+        [displayError]="true" 
+        errorMsg="Please enter valid name">
+        </app-field-error-display>
         </div>
+
+        <div *ngIf="stCodeError==true">
+          <app-field-error-display 
+          [displayError]="true" 
+          errorMsg="Please Enter valid station code">
+          </app-field-error-display>
+        </div>
+
+        <div *ngIf="xcordError==true">
+          <app-field-error-display 
+          [displayError]="true" 
+          errorMsg="Please Enter X-Coordinate in range">
+          </app-field-error-display>
+        </div>
+
+        <div *ngIf="ycordError==true">
+          <app-field-error-display 
+          [displayError]="true" 
+          errorMsg="Please Enter y-Coordinate in range">
+          </app-field-error-display>
+        </div>
+
+        <div *ngIf="fuelError==true">
+          <app-field-error-display 
+          [displayError]="true" 
+          errorMsg="Please enter valid Price">
+          </app-field-error-display>
+        </div>
+
+          <form   class="product-form" (ngSubmit)="onSubmit()">
+          <div class="Container">
+           <div class="row">
+             <div class="col-md-4">
+              <div class="form-group">
+                <label class="col-25 control-label required" for="name" style="color: SaddleBrown ; text-align:right ;">Name :</label> 
+                <input type="text"   class="col-75 form-control" name="place_name" id="title" required [(ngModel)]="place.place_name" placeholder=" Enter the place name"  >
+              </div>
+              &nbsp;
+              <div>
+                <label for="number" class="col-25 control-label required" style="color: SaddleBrown;  text-align:right;" >code :</label>
+                <input type="number"  class="col-75 form-control" name="code" id="code" required [(ngModel)]="place.code" > 
+              </div>
+              &nbsp;
+              <div >
+                <label for="latitude" class="control-label required col-25" style="color: SaddleBrown ; text-align:right ;">X-Coordinate :</label>
+                <input type="number" class="col-75 form-control" name="X-Coordinate" id="X_Coordinate" required [(ngModel)]="place.X_Coordinate">
+              </div>
+             &nbsp;
+              <div>
+                <label for="longitude" class="control-label required col-25" style="color: SaddleBrown; text-align:right ;">Y-Coordinate :</label>
+                <input type="number"  class="col-75 form-control"  name="Y-Coordinate" id="Y_Coordinate" required [(ngModel)]="place.Y_Coordinate">
+              </div>
+              &nbsp;
+              <div>
+                <label for="price" class="control-label required col-25" style="color: SaddleBrown; text-align:right ;" >Price: </label>
+                <input type="number"  name="price"  class="col-75 form-control" id="price" required [(ngModel)]="place.Fuel_rate"> 
+              </div>
+              &nbsp;
+              <div>
+                <button  class="btn btn-success"  type="submit" >Submit</button>
+              </div>
+              &nbsp;
+             </div>
+           </div>
+          </div>  
+          </form>
+        
       </main>
     </div>
   </div>
@@ -72,4 +115,4 @@
 
 
  
-
+<!-- [ngClass]="displayFieldCss('price')" -->

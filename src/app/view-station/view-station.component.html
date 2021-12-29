@@ -3,15 +3,19 @@
 </p> -->
 <!--  <p>{{ data | json}}</p>
 <router-outlet></router-outlet> -->
-<h2 *ngIf="!displayeditStation" class="center"> Fuel Stations</h2>
-    <button type="button" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"   *ngIf="displayhomeStation" (click)="backFunc()">Back</button>
+<div class="center">
+<h1 *ngIf="!displayeditStation"  class="font-effect-fire" style="text-align:center; font-family: Sofia, sans-serif; font-size: 50px; color:black;"> Fuel Stations</h1></div>
+<h2 *ngIf="message==true" style="text-align: center; color: seagreen; font-size: medium;">Record Deleted Succefully!!!</h2>
+<h2 *ngIf="editmessage==true" style="text-align: center; color: seagreen; font-size: medium;">Record Updated Succefully!!!</h2>
+
+    <!-- <button type="button" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"   *ngIf="displayhomeStation" (click)="backFunc()">Back</button> -->
 
  <!-- <p> {{ data | json}}</p> -->
 
 
   <table *ngIf="!displayeditStation" id="stationTableId"  class="table table-bordered">
     <thead class="thead-dark">
-    <tr>
+    <tr  style="color: SaddleBrown">
       
       <th class="hidden">Id</th>
     
@@ -34,40 +38,20 @@
       <td>{{stationData.x_coordinate}}</td> 
       <td>{{stationData.y_coordinate}}</td>
       <td><span *ngIf="edit==false || i!=index">{{stationData.Fuel_Rate}}</span>
-        <input *ngIf="edit==true && i==index" [(ngModel)]="fuel" value="{{stationData.Fuel_Rate}}" #i/></td>
-      <td ><button  class="btn btn-danger" (click)="deleteStation(stationData,i)" > Delete</button> &nbsp; &nbsp;
+        <input type="number" *ngIf="edit==true && i==index" [(ngModel)]="fuel" value="{{stationData.Fuel_Rate}}" #i/></td>
+      <td ><button class="btn btn-danger" (click)="deleteStation(stationData,i)" > Delete</button> &nbsp; &nbsp;
         
 
         <!-- <td><button type="button" class="btn btn-success" (click)="editStation(stationData)" style="cursor: pointer;" > Edit</button></td> -->
         <span ></span><button type="button" class="btn btn-primary" *ngIf="update==false || i!=index" id="saveBtn"  (click)="editStation(stationData,i)" type="submit">Edit</button>
-        <button type="button" class="btn btn-success" *ngIf="update==true  && i==index"  (click)="updateStation(stationData)">update</button>
+        <button  type="button" class="btn btn-success" *ngIf="update==true  && i==index"  (click)="updateStation(stationData)">update</button>
+
         <!-- <button type="button" class="btn btn-primary" *ngIf="update==false && i==index" (click)="editStation()" >Edit</button>  -->
       </td>
       </tr>
     </tbody>
   </table>
 
-<!-- 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-    <ng-container matColumnDef="productId">
-      <th mat-header-cell *matHeaderCellDef> ID </th>
-      <td mat-cell *matCellDef="let element"> {{station.Id}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="dept">
-      <th mat-header-cell *matHeaderCellDef> PlaceName</th>
-      <td mat-cell *matCellDef="let element"> {{station.place_name}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="itemtype">
-      <th mat-header-cell *matHeaderCellDef> Item type </th>
-      <td mat-cell *matCellDef="let element"> {{element.itemtype}} </td>
-    </ng-container>
-  
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table> -->
   <app-edit-station  [msgFromParent1]='currentMsgToChild1' *ngIf="displayeditStation"></app-edit-station>
-  <!-- <app-edit-station [Station] = "sendToEdit"  (getResponse) = " getResponse($event)" *ngIf="displayeditStation"></app-edit-station> -->
+  

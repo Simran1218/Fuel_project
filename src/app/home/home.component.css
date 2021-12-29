@@ -53,6 +53,18 @@
     }
   }
 
+  .buttons{
+    border-color: black;
+    position: absolute;
+    top:50%;
+    right: 0;
+    left: 100;
+    width: 120px;
+    transform: translateY(-50%);
+  }
+
+ 
+
 
 
 

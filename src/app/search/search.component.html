@@ -31,7 +31,7 @@
 </div> -->
 <div class="row">
   <div class="col-md-12">
-  <h1 style="text-align:center">{{title}}</h1>
+  <h1 class="font-effect-fire" style="text-align:center; font-family: Sofia, sans-serif; font-size: 70px; color:black;" >{{title}}</h1>
 </div>
 </div>
     <ul>
@@ -46,19 +46,15 @@
            <p  style="font-style: italic; color: rgb(212, 17, 17);"></p>
          </div>
         <div style="text-align:center;">
-          <div  [formGroup]="form" >   
+          <div >   
             <label for="xnumber">X-Coordinate:</label> 
-            <input type="text" formControlName="xnumber" #xCord class="searchTer" >&nbsp; &nbsp;
+            <input type="number"  #xCord class="searchTer" >&nbsp; &nbsp;
            
 
             <label for="ynumber">Y-Coordinate:</label>  
-            <input type="text" formControlName="ynumber" #yCord class="searchTer" >&nbsp; &nbsp;
-            <!-- <div *ngIf="f.ynumber.touched && f.ynumber.invalid" class="alert alert-danger">
-              <div *ngIf="f.ynumber.errors.required">Number is required.</div>
-              <div *ngIf="f.ynumber.errors.pattern">Enter only number.</div>
-          </div> -->
-         <!-- <div class="row" formControlName="xnumber, ynumber "> -->
-        <button   class="btn btn-primary" type="submit" value="Submit" style="cursor: pointer;"  
+            <input type="number"  #yCord class="searchTer" >&nbsp; &nbsp;
+
+        <button class="w3-button w3-ripple w3-yellow" type="submit" value="Submit" style="cursor: pointer;"  
         (click) = "onSearch(xCord.value,yCord.value)">  Search</button><br>
         
     </div>
@@ -66,27 +62,33 @@
     </div>
     </ul>
 
+    &nbsp; &nbsp; &nbsp;
     <!-- <h2>Top  3 fuel Station</h2> -->
 <div  class="center" style="text-align:center;">
  <div class="congtainer">      
-	<table *ngIf="showtable==true" class="table table-striped">
-    <thead class="thead-info">
-			<tr class="bg-warnig">
-        <th >Place Name</th>
-        <th >Fuel Rate</th>
-        <th >Distnace</th>
+	<table *ngIf="showtable==true" class="table table-bordered">
+    <thead class="thead-dark">
+			<tr style="color: SaddleBrown">
+        <th style=" color: black(212, 17, 17);" >Place Name</th>
+        <th style="color: black(212, 17, 17);">Station Code</th>
+        <th style="color: black(212, 17, 17);">X-Coordinate</th>
+        <th style="color: black(212, 17, 17);">Y-Coordinate</th>
+        <th style=" color: black(212, 17, 17);">Fuel Rate</th>
+        <th style=" color: black(212, 17, 17);">Distance</th>
       </tr>
     </thead>
     <tbody>
-			<tr   class="table-warning"  *ngFor="let corDate of data">
-				<td class="table-primary">{{corDate.place_name}}</td>
-				<td class="table-info">{{corDate.Fuel_Rate}}</td>
-        <td class="table-primary">{{corDate.distance_from_my_location}}</td>
+			<tr  *ngFor="let corDate of data">
+				<td >{{corDate.place_name}}</td>
+        <td>{{corDate.station_code}}</td>
+        <td>{{corDate.x_coordinate}}</td>
+        <td>{{corDate.y_coordinate}}</td>
+				<td >{{corDate.Fuel_Rate}}</td>
+        <td>{{corDate.distance_from_my_location}}</td> 
 			</tr>
     </tbody>
 	</table>
 </div>
 </div>
-   
-
+&nbsp; &nbsp; &nbsp;
  

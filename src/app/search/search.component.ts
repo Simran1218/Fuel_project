@@ -23,7 +23,7 @@ export class SearchComponent implements OnInit {
   xerror: any = false;
   xmessage:any ="Enter  Only Valid Number For X";
   yerror: any = false;
-  ymessage: any="Enter Only Valid Numebr For Y ";
+  ymessage: any="Enter Only Valid Number For Y ";
   showtable: any = false;
   corerror: any = false;
   cormessage: any ="Enter Valid coordinate For X and Y";
@@ -48,6 +48,9 @@ export class SearchComponent implements OnInit {
    this.displayViewStation=false;
    this.displayAddStation=true;
  }
+ backFunc(){ 
+  window.location.reload();
+  }  
  onSearch(x_cordinate:any , y_cordinate:any){
   this.yerror= false;
   this.xerror=false;
@@ -91,6 +94,7 @@ export class SearchComponent implements OnInit {
       //console.log(Number(data)); 
   }
   ) 
+  
 }
   coridnateClass(coridnateClass: number) {
      

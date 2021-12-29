@@ -1,6 +1,7 @@
 table, th, td {
-    border: 1px solid white;
+    border: 2px solid white;
     border-collapse: collapse;
+    position: center;
   }
   th, td {
     background-color: LightCyan ;
@@ -8,6 +9,7 @@ table, th, td {
   }
   .center {
     display: flex;
+    position:relative;
     justify-content: center;
     text-decoration-color: red;
   }

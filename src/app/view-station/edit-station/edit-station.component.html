@@ -61,9 +61,11 @@
       <div class="row">      
       <label for="">Price:  </label>
       <!-- {{ msgFromParent1.Fuel_Rate}} -->
+
       <input type="number"  class =" text-right" name="price" id="price"  placeholder="Enter a price " required [(ngModel)]="msgFromParent1.Fuel_Rate">
       <!-- <div class="center"> -->
       <!-- <span class="input-group-btn"> -->
+        <h2 *ngIf="editmessage==true" style="text-align: center; color: seagreen; font-size: medium;">Record Updated Succefully!!!</h2>
       <button type="reset" class=" btn  btn-success"  value="Reset" (click)="editStation()" type="submit">Update</button>
       <!-- </span> -->
       <!-- </div> -->

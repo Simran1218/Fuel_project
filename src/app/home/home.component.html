@@ -19,11 +19,18 @@
     </li> -->
   
     <!-- <a routerLink="/" class="navbar-brand "></a> -->
+    <li *ngIf="displayViewStation"  >
+      
+      <button  type="button" class="w3-button w3-black" role="button" aria-pressed="true" style="float: left;"  *ngIf="displayhomeStation" (click)="backFunc()">Home</button>
+    </li>
+    <li *ngIf="displayAddStation">
+      <button  type="button" class="w3-button w3-black" role="button" aria-pressed="true" style="float: left;"  *ngIf="displayhomeStation" (click)="backFunc()">Home</button>
+    </li>
     <li>
       <a (click)="viewStationMethod()" style="cursor: pointer;">View Station</a>   
-       
       </li>
-      <li>
+     
+      <li >
       <a (click)="addStationMethod()" style="cursor: pointer;">Add station</a>
       
     </li>
